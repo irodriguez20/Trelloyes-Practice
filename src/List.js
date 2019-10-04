@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import './list.css';
-
+import cards from './App';
 
 
 function List(props){
@@ -22,5 +22,6 @@ function List(props){
         </section>
     );
 }
+
 
 export default List;
