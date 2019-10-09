@@ -1,11 +1,10 @@
 import React from 'react';
 import Card from './Card';
 import './list.css';
-import cards from './App';
 
 
-function List(props){
- const cards = props.cards.map(card => <Card title={card.title} content={card.content} key ={card.id}/>);
+
+export default function List(props){
 
     return (
         <section className="List">
@@ -13,15 +12,25 @@ function List(props){
           <h2>{props.header}</h2>
         </header>
         <div className="List-cards">
-            {cards}
-
-            <button type="button" class="List-add-button">
+            {props.cards.map((card) =>
+            <Card 
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            content={card.content}
+            onClickDelete={props.onClickDelete}
+            />
+            )}
+            <button type="button" className="List-add-button" 
+            onClick={() => props.onClickAdd(props.id)}
+            >
             + Add Random Card
           </button>
         </div>
         </section>
-    );
+    )
 }
 
-
-export default List;
+List.defaultProps = {
+  onClickAdd: () => {},
+}
